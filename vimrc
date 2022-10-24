@@ -2,8 +2,17 @@ set nocp
 filetype plugin on
 set hls
 set number
-set background=dark
-colorscheme darkblue
+
+"set background=dark
+"colorscheme desert
+"colorscheme darkblue
+"colorscheme industry
+colorscheme molokai
+"colorscheme lucius
+"colorscheme jellybeans
+"set termguicolors
+
+
 syntax on
 
 "set line auto indent
@@ -23,6 +32,7 @@ set tabstop=4
 set expandtab
 retab
 
+
 "######configure taglist
 let Tlist_Ctags_cmd = $VIM.'/usr/bin/ctags'
 let Tlist_Use_Right_Window = 1
@@ -32,6 +42,7 @@ let Tlist_Enable_Fold_Column = 1
 let Tlist_Auto_Open = 0
 let Tlist_Show_One_file = 1
 let Tlist_Use_SingleClick = 1
+let Tlist_WinWidth=50
 
 
 "######configure cscope
@@ -67,11 +78,11 @@ nmap <F1> :w <CR>
 "gdb
 nmap <F7> :!gdb -q ./%:r <CR>
 
-"######configure MiniBufExplorer 
-let g:miniBufExplMapWindowNavVim = 1 
-let g:miniBufExplMapWindowNavArrows = 1 
-let g:miniBufExplMapCTabSwitchBufs = 1 
-let g:miniBufExplModSelTarget = 1 
+"######configure MiniBufExplorer
+let g:miniBufExplMapWindowNavVim = 1
+let g:miniBufExplMapWindowNavArrows = 1
+let g:miniBufExplMapCTabSwitchBufs = 1
+let g:miniBufExplModSelTarget = 1
 let g:miniBufExplUseSingleClick = 1
 
 
@@ -80,18 +91,19 @@ set encoding=utf-8
 
 "use +/- or arrow
 let g:NERDTreeDirArrows=0
+let NERDTreeWinSize=30
 
 "file filter, use regular expression in [], ignore suffix with: .o, .ko, .gz
 let NERDTreeIgnore = ['.*\.o$','.*\.ko$','.*\.gz$']
 
 " auto open nerdtree
-"autocmd BufRead * . 
+"autocmd BufRead * .
 autocmd vimenter * NERDTree
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 " auto close nerdtree when the last windown is nerdtree
- autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") &&b:NERDTreeType == "primary") | q | endif
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") &&b:NERDTreeType == "primary") | q | endif
 
 " let curser on left edit area when open
 autocmd VimEnter * wincmd p
@@ -106,8 +118,8 @@ autocmd VimEnter * wincmd p
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""vundle plugin
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set nocompatible               "去除VIM一致性，必须"
-filetype off                   "必须"
+set nocompatible "去除VIM一致性，必须"
+filetype off "必须"
 
 "设置包括vundle和初始化相关的运行时路径"
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -122,10 +134,8 @@ Plugin 'VundleVim/Vundle.vim'
 "安装YouCompleteMe插件"
 Plugin 'Valloric/YouCompleteMe'
 
-call vundle#end()              
-filetype plugin indent on      "加载vim自带和插件相应的语法和文件类型相关脚本，必须"
-
-
+call vundle#end()
+filetype plugin indent on "加载vim自带和插件相应的语法和文件类型相关脚本，必须"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""新文件标题
@@ -202,6 +212,4 @@ func SetTitle()
         "新建文件后，自动定位到文件末尾
 endfunc 
 autocmd BufNewFile * normal G
-
-
 
