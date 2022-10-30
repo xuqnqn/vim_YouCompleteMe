@@ -36,7 +36,7 @@
   #下面试在qemu上成功的几个命令：
   /mnt/kexec -p /mnt/bzImage --initrd=/mnt/initramfs.cpio.gz 
   echo c > /proc/sysrq-trigger
-  /mnt/makedumpfile -l --message-level 1 -d 31 /proc/vmcore makedumpfilecore
+  /mnt/makedumpfile -l --message-level 1 -d 31 /proc/vmcore /mnt/vmcore
 
 
 
